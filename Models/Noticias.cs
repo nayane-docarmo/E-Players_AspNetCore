@@ -8,24 +8,44 @@ namespace E_Players_AspNetCore.Models
 {
     public class Noticias: EPlayersBase , INoticias
     {
+      public Noticias(int idNoticias, string titulo,string texto, string imagem)
+        {
+            this.IdNoticias = idNoticias;
+            this.Titulo = titulo;
+            this.Texto = texto;
+            this.Imagem = imagem;
+
+        }
         public int IdNoticias { get; set; }
         public string Titulo { get; set; }
         public string Texto { get; set; }
         public string Imagem { get; set; }
+        /// <summary>
+        /// configuraçao da tabela em csv
+        /// </summary>
+        private const string PATH = "Database/noticias.csv";
 
-        private const string PATH ="Datebase/noticias.csv";
+        public Noticias()
+        {
+            CreateFolderAndFile(PATH);
+        }
 
         public void Create(Noticias n)
         {
         string[] linha = { PrepararLinha(n) };
             File.AppendAllLines(PATH, linha);
         }
+        /// <summary>
+        /// como o dado será exibido
+        /// </summary>
+        /// <param name="n"></param>
+        /// <returns>Noticia ; titulo; texto; imagem</returns>
         private string PrepararLinha(Noticias n)
         {
-            return $"{n.Titulo};{n.Texto};{n.Imagem}";
+            return $"{n.IdNoticias};{n.Titulo};{n.Texto};{n.Imagem}";
         }
 
-        public void Delete(int INoticias)
+        public void Delete(int IdNoticias)
         {
         List<string> linhas = ReadAllLinesCSV(PATH);
             linhas.RemoveAll(x => x.Split(";")[0] == IdNoticias.ToString());

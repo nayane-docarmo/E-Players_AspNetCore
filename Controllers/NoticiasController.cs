@@ -12,25 +12,25 @@ namespace E_Players_AspNetCore.Controllers
 {
     public class NoticiasController : Controller
     {
-        Noticias noticiaModel = new Noticias();
+        Noticias noticiasModel = new Noticias();
 
          public IActionResult Index()
         {
-            ViewBag.Noticias = noticiaModel.ReadAll();
+            ViewBag.Noticias = noticiasModel.ReadAll();
             return View();
         }
-        public IActionResult Adicionar_Noticia(IFormCollection form)
+        public IActionResult Adicionar (IFormCollection form)
         {
-           Noticias novaNoticia   = new Noticias();
-            novaNoticia.IdNoticias = Int32.Parse(form["IdNoticia"]);
-            novaNoticia.Titulo  = form["Tittulo"];
+            Noticias novaNoticia   = new Noticias();
+            novaNoticia.IdNoticias = Int32.Parse(form["IdNoticias"]);
+            novaNoticia.Titulo  = form["Titulo"];
             novaNoticia.Texto = form["Texto"];
             novaNoticia.Imagem   = form["Imagem"];
 
-            noticiaModel.Create(novaNoticia);            
-            ViewBag.Equipes = noticiaModel.ReadAll();
+            noticiasModel.Create(novaNoticia);            
+            ViewBag.Noticias = noticiasModel.ReadAll();
 
-            return LocalRedirect("~/Equipe");
+            return LocalRedirect("~/Noticias");
         }
     }
 }

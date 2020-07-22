@@ -3,7 +3,7 @@
         ViewData["Title"] = "Noticias";
 }
   
-<form method="POST" action='@Url.Action("Adicionar Noticia")'>
+<form method="POST" action='@Url.Action("Adicionar")'>
         <label for="IdNoticias">IdNoticias</label>
         <input type="text" name="IdNoticias" id="IdNoticias">
         <label for="Titulo">Titulo</label>
@@ -14,10 +14,10 @@
         <input type="text" name="Imagem" id="Imagem">
         <button type="submit">Adicionar Notícia</button>
 </form>
-<table class="table">
+<table class="table table-responsive table-strinped">
         <thead>
                 <th>IdNoticias</th>
-                <th>Tituo</th>
+                <th>Titulo</th>
                 <th>Texto</th>
                 <th>Imagem</th>
         </thead>
