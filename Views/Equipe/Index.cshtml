@@ -2,16 +2,30 @@
 @{
         ViewData["Title"] = "Equipes";
 }
-
+<div class="titulo_pagina">
+    <h1>Cadastro de equipe</h1>
+</div>
+<div class="container">
 <form method="POST" action='@Url.Action("Cadastrar")' enctype="multipart/form-data">
+
+        <div class="campo">
         <label for="IdEquipe">IdEquipe</label>
         <input type="text" name="IdEquipe" id="IdEquipe">
+        </div>
+
+        <div class="campo">
         <label for="Nome">Nome</label>
         <input type="text" name="Nome" id="Nome">
+        </div>
+
+        <div class="campo">
         <label for="Imagem">Imagem</label>
         <input type="file" name="Imagem" id="Imagem">
+        </div>
+        
         <button type="submit">Cadastrar</button>
 </form>
+</div>
 <table class="table table-responsive table-striped">
         <thead>
                 <th>IdEquipe</th>
